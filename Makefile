@@ -1,5 +1,14 @@
-# Compiler I am using
-CC = clang
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+	CC = clang
+endif
+ifeq ($(UNAME), Darwin)
+	CC = clang
+endif
+ifeq ($(OS), Windows)
+	CC = clang
+endif
 APP_NAME = main
 BUILD_DIR = ./bin
 # This is a wildcard statement. Basically will
@@ -36,5 +45,10 @@ APP_LINK = -Llib/mac -lraylib
 # There are more things that are available via clang or gcc, but this is
 # a goos start. Now comes out "scripts"
 
-game:
+build:
 	$(CC) $(C_FLAGS) -o $(BUILD_DIR)/$(APP_NAME) $(C_FILES) $(APP_INCLUDE) $(APP_LINK)
+
+run:
+	$(BUILD_DIR)/$(APP_NAME)
+clean:
+	rm -f ./bin *.o
