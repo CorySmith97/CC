@@ -7,7 +7,7 @@ ifeq ($(UNAME), Darwin)
 	CC = clang
 endif
 ifeq ($(OS), Windows)
-	CC = clang
+	CC = cc
 endif
 APP_NAME = main
 BUILD_DIR = ./bin
@@ -18,7 +18,7 @@ BUILD_DIR = ./bin
 C_FILES = ./src/*.c
 
 # Here are multiline. This is a c optimization flag
-C_FLAGS = -o2
+C_FLAGS = -g -o0
 # These is a warnings flag
 C_FLAGS += -Wall
 
@@ -50,5 +50,8 @@ build:
 
 run:
 	$(BUILD_DIR)/$(APP_NAME)
+
+.PHONY: clean
+
 clean:
-	rm -f ./bin *.o
+	rm -f ./bin/*.o

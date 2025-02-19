@@ -4,9 +4,14 @@
   <component name="MakefileSettings">
     <option name="linkedExternalProjectsSettings">
       <MakefileProjectSettings>
-        <option name="buildDirectory" value="./bin/" />
-        <option name="buildTarget" value="game" />
+        <option name="buildDirectory" value="" />
+        <option name="buildTarget" value="build" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
         <option name="version" value="2" />
       </MakefileProjectSettings>
     </option>
