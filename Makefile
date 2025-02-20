@@ -18,7 +18,7 @@ BUILD_DIR = ./bin
 C_FILES = ./src/*.c
 
 # Here are multiline. This is a c optimization flag
-C_FLAGS = -g -o0
+C_FLAGS = -std=c23 -g -o0
 # These is a warnings flag
 C_FLAGS += -Wall
 

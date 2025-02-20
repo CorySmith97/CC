@@ -21,7 +21,7 @@ typedef struct {
 typedef struct {
     uint32_t entity_id;
     Texture2D texture;
-} sprite_altas_t;
+} sprite_atlas_t;
 
 typedef struct {
     position_t position[100];
@@ -30,8 +30,12 @@ typedef struct {
 typedef struct {
 } component_t;
 
-void CreateEntity(entity_list_t* entity_list) {
+typedef struct {
+    uint32_t id;
+} entity_t;
 
-}
+void EntityCreate(entity_t* entity);
+void EntityAddPosition(entity_t* entity, position_t pos);
+void EntityAddSprite(entity_t* entity, sprite_atlas_t sprite);
 
 #endif

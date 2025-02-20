@@ -1,49 +1,75 @@
 #ifndef ALLOC_H
 #define ALLOC_H
 
+#include "llist.h"
+#include "util.h"
+#include <stddef.h>
+#include <stdio.h>
 #pragma once
 
 #include <stdlib.h>
 
-// Basics of an Arena Allocator
-//
-// Chunk of memory
-// -------------------------
-// |                       |
-// |                       |
-// -------------------------
-// ^
-// Data
-//
-// Allocate X amount of data;
-//
-// -------------------------
-// |XXXXXXX                |
-// |XXXXXXX                |
-// -------------------------
-// ^       ^
-// Data    Ptr
-//
-// -------------------------
-// |XXXXXXXXXXXXXXXXX      |
-// |XXXXXXXXXXXXXXXXX      |
-// -------------------------
-// ^                ^
-// Data             Ptr
-//
-//
-// ResetArena
-// -------------------------
-// |XXXXXXXXXXXXXXXXX      |
-// |XXXXXXXXXXXXXXXXX      |
-// -------------------------
-// ^
-// Data/Ptr
-//
-// We move the pointer back to the original location and
-// reset the capacity. We then overwrite all the previous
-// data. Only at the end of the arena do we free everything
-// completely.
+typedef struct allocator allocator_t;
+
+#define mem_alloc mem_alloc_impl
+#define mem_free mem_free_impl
+
+void *mem_alloc_impl(allocator_t *a, size_t size);
+void mem_free_impl(allocator_t *a);
+
+typedef struct allocator_stats {
+    size_t size;
+} allocator_stats_t;
+
+typedef struct allocator_mem_block {
+    LLIST_NODE(struct allocator_mem_block) node;
+    int blocks_used, total_used;
+} allocator_mem_block_t;
+
+typedef struct allocator {
+    void *(*alloc_fn)(allocator_t*, size_t);
+    void (*free_fn)(allocator_t*);
+
+    allocator_stats_t stats;
+
+    union {
+        struct {
+            void *data;
+            char *ptr;
+            size_t size, capacity;
+        } arena_allocator;
+        struct {
+            size_t size, capacity, largest;
+            LLIST(allocator_mem_block_t) blocks;
+        } page_allocator;
+        struct {
+            void *data;
+            int size, capacity;
+        } bump;
+    };
+} allocator_t;
+
+
+#ifdef ALLOC_IMPL
+static void _page_allocator_init(allocator_t *a, int n) {
+    n = multround_up_to_mult(n, MAXMAX_ALIGN);
+
+    allocator_mem_block_t block = a->page_allocator.blocks.head;
+
+    if (!block || block->capacity + n > block->size) {
+        const int size = max(a->page_allocator.largest, n);
+
+        block = mem_alloc(
+            a->page_allocator.parent,
+            size + sizeof(allallocator_mem_block_t));
+
+        block->size = size;
+        block->used = 0;
+        llist_init_node(&block->node);
+        llistllist_prepend(node, &a->page_allocator.blocks, block);
+    }
+}
+#endif
 
 typedef struct {
     void* data;
@@ -54,30 +80,53 @@ typedef struct {
 // This takes a zero initialized arena_t
 // and a capacity, which is the number of
 // bytes the arena will hold total.
-void ArenaNew(arena_t* arena, int size) {
+void inline ArenaNew(arena_t* arena, int size) {
     arena->data = malloc(size);
     arena->ptr = arena->data;
     arena->capacity = 0;
     arena->size = size;
 }
 
-void ArenaReset(arena_t* arena) {
+void inline ArenaReset(arena_t* arena) {
     arena->ptr = arena->data;
 }
 
-void *ArenaAllocate(arena_t* arena, int size) {
-    void *ptr = arena->ptr;
-    if (sizeof(arena->ptr) + size > arena->size){
+void *_arena_allocate(allocator_t* a, size_t size) {
+    void *ptr = a->arena_allocator.ptr;
+    if (sizeof(a->arena_allocator.ptr) + size > a->arena_allocator.capacity){
         return NULL;
     }
-    arena->ptr = arena->ptr + size;
-    arena->capacity += size;
+    a->arena_allocator.ptr = a->arena_allocator.ptr + size;
+    a->arena_allocator.size += size;
     return ptr;
 }
 
-void ArenaFree(arena_t* arena) {
-    free(arena->data);
-    free(arena);
+void _arena_free (allocator_t* a) {
+    free(a->arena_allocator.data);
+}
+
+
+void arena_allocator_init(allocator_t *a, size_t capacity) {
+    void *data = malloc(capacity);
+    *a = (allocator_t){
+        .stats = {},
+        .alloc_fn = _arena_allocate,
+        .free_fn = _arena_free,
+        .arena_allocator = {
+            .data = data,
+            .ptr = data,
+            .size = 0,
+            .capacity = capacity,
+        }
+    };
+}
+
+void *mem_alloc_impl(allocator_t *a, size_t size) {
+    void *data = a->alloc_fn(a, size);
+    return data;
+}
+void mem_free_impl(allocator_t *a) {
+    a->free_fn(a);
 }
 
 #endif
