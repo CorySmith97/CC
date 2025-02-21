@@ -101,31 +101,34 @@ void *_arena_allocate(allocator_t* a, size_t size) {
     return ptr;
 }
 
-void _arena_free (allocator_t* a) {
+inline void _arena_free (allocator_t* a) {
     free(a->arena_allocator.data);
+    a->arena_allocator.data = NULL;
+    a->arena_allocator.ptr = NULL;
+    a->arena_allocator.capacity = 0;
+    a->arena_allocator.size = 0;
 }
 
 
-void arena_allocator_init(allocator_t *a, size_t capacity) {
-    void *data = malloc(capacity);
+inline void arena_allocator_init(allocator_t *a, size_t capacity) {
     *a = (allocator_t){
         .stats = {},
         .alloc_fn = _arena_allocate,
         .free_fn = _arena_free,
         .arena_allocator = {
-            .data = data,
-            .ptr = data,
+            .data = malloc(capacity),
             .size = 0,
             .capacity = capacity,
         }
     };
+    a->arena_allocator.ptr = a->arena_allocator.data;
 }
 
-void *mem_alloc_impl(allocator_t *a, size_t size) {
+inline void *mem_alloc_impl(allocator_t *a, size_t size) {
     void *data = a->alloc_fn(a, size);
     return data;
 }
-void mem_free_impl(allocator_t *a) {
+inline void mem_free_impl(allocator_t *a) {
     a->free_fn(a);
 }
 
