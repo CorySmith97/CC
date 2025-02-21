@@ -1,10 +1,10 @@
 #include "../lib/raylib.h"
 #include "../lib/raymath.h"
 #include <stdint.h>
-#include "alloc.h"
 #include <assert.h>
-#include "arraylist.h"
-#include "llist.h"
+#include "util/alloc.h"
+#include "util/arraylist.h"
+#include "util/llist.h"
 
 #define GRAVITY 0.2
 
@@ -19,9 +19,12 @@ typedef struct {
     int x, y;
 } vec2;
 
-//DEFINE_ARRAY_LIST(vec2);
+DEFINE_ARRAY_LIST(vec2);
 
 int main(void){
+    arraylist_vec2_t v;
+    arraylist_vec2_init(&v);
+    arraylist_vec2_push(&v, (vec2){.x = 1, .y = 1});
     allocator_t a;
     arena_allocator_init(&a, 1024);
 
@@ -43,6 +46,7 @@ int main(void){
         BeginDrawing();
         ClearBackground(RAYWHITE);
         BeginMode2D(camera);
+        DrawRectangle(30, 39, 100, 100, BLACK);
         EndMode2D();
 
         EndDrawing();

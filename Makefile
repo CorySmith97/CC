@@ -8,7 +8,7 @@ ifeq ($(UNAME), Darwin)
 	CC = clang
 endif
 ifeq ($(OS), Windows)
-	CC = cc
+	CC = clang
 endif
 APP_NAME = main
 BUILD_DIR = ./bin
@@ -47,7 +47,8 @@ ifeq ($(UNAME), Darwin)
 	APP_INCLUDE += -I./lib/ -framework Cocoa -framework Opengl -framework IOKit
 endif
 ifeq ($(OS), Windows)
-	APP_LINK += -Llib/windows -lraylib
+	APP_LINK += -Llib/windows -lraylib -lopengl32 -lgdi32 -lwinmm
+	APP_INCLUDE += -I./lib/
 endif
 
 # There are more things that are available via clang or gcc, but this is
