@@ -5,6 +5,8 @@
 // Dont look too into it. May not be completely safe. But it tickels
 // my brain.
 
+#include "alloc.h"
+
 #define init(_plist) \
     _plist->functions->init()
 

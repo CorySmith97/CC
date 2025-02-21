@@ -1,11 +1,11 @@
 #ifndef ALLOC_H
 #define ALLOC_H
 
+#pragma once
 #include "llist.h"
 #include "util.h"
 #include <stddef.h>
 #include <stdio.h>
-#pragma once
 
 #include <stdlib.h>
 
@@ -101,7 +101,7 @@ void *_arena_allocate(allocator_t* a, size_t size) {
     return ptr;
 }
 
-inline void _arena_free (allocator_t* a) {
+void _arena_free (allocator_t* a) {
     free(a->arena_allocator.data);
     a->arena_allocator.data = NULL;
     a->arena_allocator.ptr = NULL;
@@ -110,7 +110,7 @@ inline void _arena_free (allocator_t* a) {
 }
 
 
-inline void arena_allocator_init(allocator_t *a, size_t capacity) {
+void arena_allocator_init(allocator_t *a, size_t capacity) {
     *a = (allocator_t){
         .stats = {},
         .alloc_fn = _arena_allocate,
@@ -124,11 +124,11 @@ inline void arena_allocator_init(allocator_t *a, size_t capacity) {
     a->arena_allocator.ptr = a->arena_allocator.data;
 }
 
-inline void *mem_alloc_impl(allocator_t *a, size_t size) {
+void *mem_alloc_impl(allocator_t *a, size_t size) {
     void *data = a->alloc_fn(a, size);
     return data;
 }
-inline void mem_free_impl(allocator_t *a) {
+void mem_free_impl(allocator_t *a) {
     a->free_fn(a);
 }
 

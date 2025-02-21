@@ -19,12 +19,9 @@ typedef struct {
     int x, y;
 } vec2;
 
-DEFINE_ARRAY_LIST(vec2);
+//DEFINE_ARRAY_LIST(vec2);
 
 int main(void){
-    arraylist_vec2_t v;
-    arraylist_vec2_init(&v);
-    arraylist_vec2_push(&v, (vec2){.x = 1, .y = 1});
     allocator_t a;
     arena_allocator_init(&a, 1024);
 
