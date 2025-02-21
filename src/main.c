@@ -11,7 +11,7 @@ int main(){
     while (!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Deez Nuts", 10, 10, 12, BLACK);
+        DrawText("Deezeee Nuts", 10, 10, 12, BLACK);
         EndDrawing();
     }
 }
