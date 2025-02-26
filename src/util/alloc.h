@@ -1,6 +1,3 @@
-#ifndef ALLOC_H
-#define ALLOC_H
-
 #pragma once
 #include "llist.h"
 #include <stddef.h>
@@ -130,5 +127,3 @@ void *mem_alloc_impl(allocator_t *a, size_t size) {
 void mem_free_impl(allocator_t *a) {
     a->free_fn(a);
 }
-
-#endif

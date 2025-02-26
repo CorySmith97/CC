@@ -1,10 +1,15 @@
 #include "../lib/raylib.h"
 #include "../lib/raymath.h"
+#include<stdio.h>
 #include <stdint.h>
 #include <assert.h>
 #include "util/alloc.h"
 #include "util/arraylist.h"
 #include "util/llist.h"
+#include "util/fixedlist.h"
+#include "state.h"
+#include "entity.h"
+#include "level.h"
 
 #define GRAVITY 0.2
 
@@ -19,21 +24,37 @@ typedef struct {
     int x, y;
 } vec2;
 
-DEFINE_ARRAY_LIST(vec2);
+FIXEDLIST(float, 10) list;
+
+state_t state;
 
 int main(void){
-    arraylist_vec2_t v;
-    arraylist_vec2_init(&v);
-    arraylist_vec2_push(&v, (vec2){.x = 1, .y = 1});
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    InitWindow(800, 600, "CC");
+
+    entity_init();
+    level_t test;
+    level_new_init(&test, 0);
+
+    entity_t player =  {
+        .type = ENTITY_PLAYER,
+        .pos = (Vector2){100, 200},
+        .vel = (Vector2){0, 0},
+        .rotation = 0,
+        .texture = LoadTexture("assets/golbin1.png"),
+
+    };
+    level_add_entity(&test, &player);
+
     allocator_t a;
     arena_allocator_init(&a, 1024);
+
+    list.arr[1] = 10;
 
     int* list = mem_alloc(&a, 2 * sizeof(int));
     list[0] = 10;
     list[1] = 20;
 
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-    InitWindow(800, 600, "CC");
 
     Camera2D camera = {
         .zoom = 1.0,
@@ -43,13 +64,15 @@ int main(void){
     };
 
     while (!WindowShouldClose()) {
+        level_update(&test);
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(GRAY);
         BeginMode2D(camera);
-        DrawRectangle(30, 39, 100, 100, BLACK);
+        level_render(&test);
         EndMode2D();
 
         EndDrawing();
     }
+    level_deinit(&test);
     mem_free(&a);
 }

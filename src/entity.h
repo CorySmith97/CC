@@ -1,5 +1,4 @@
-#ifndef COMPONENTS_H
-#define COMPONENTS_H
+#pragma once
 
 //To add a component you simple typedef a struct,
 //and make sure there is an ID in the struct.
@@ -12,15 +11,60 @@
 
 #include <stdint.h>
 #include "../lib/raylib.h"
+#include "../lib/raymath.h"
+#include "forward.h"
 
-typedef struct entity entity_t;
-typedef struct position position_t;
-typedef struct sprite_atlas sprite_atlas_t;
-typedef struct entity_list entity_list_t;
-typedef struct component component_t;
+// FUNCTION PROTOYPES
+void entity_init(void);
 
-void EntityCreate(entity_t* entity);
-void EntityAddPosition(entity_t* entity, position_t pos);
-void EntityAddSprite(entity_t* entity, sprite_atlas_t sprite);
+typedef enum : uint8_t {
+    ENTITY_PLAYER = 0,
+} entity_type_e;
 
-#endif
+// entity_type_t default info all entities metadata.
+// This will have rectangles, as well as will store
+// all the function pointers for that type of entity.
+//
+// Another way to think of this is as the static info
+// about all entities of a type. The info that never
+// changes.
+
+typedef struct entity_type {
+    // Name of type
+    const char* name;
+
+    // Axis Aligned Bounding Box
+    // Used for collision.
+    Rectangle aabb;
+
+    // Function to render an entity. May change based
+    // on entity
+    void (*render_fn)(const entity_t*);
+    // Function that is used to update entity every frame.
+    void (*update_fn)(level_t*, entity_t*);
+    // Function used for setting network packets each
+    // server tick
+    void (*tick_fn)(level_t*, entity_t*);
+} entity_type_t;
+
+// This is the entity stuff that changes per instance of
+// an entity.
+
+typedef struct entity {
+    // Enum for entity type. Used to get entity_type_t
+    // from the entity list.
+    entity_type_e type;
+
+    Vector2 pos, vel;
+    float rotation;
+    Texture2D texture;
+
+    struct {
+
+    } player_t;
+
+} entity_t;
+
+extern entity_type_t ENTITY_TYPES[ENTITY_COUNT];
+#define ENTITY_TYPE(_T) ((const entity_type_t*) &ENTITY_TYPES[(_T).type])
+

@@ -21,11 +21,15 @@ pub fn build(b: *std.Build) !void {
         .root = b.path("src/"),
         .files = &[_][]const u8{
             "main.c",
+            "entity.c",
+            "level.c",
+            "tile.c",
         },
         .flags = &[_][]const u8{
             "-std=c23",
             "-Wall",
             "-I./lib",
+            "-I./assets",
         },
     });
 

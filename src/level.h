@@ -1,0 +1,27 @@
+#pragma once
+
+#include "entity.h"
+#include "forward.h"
+#include <stdlib.h>
+#include <stdint.h>
+
+// FUNCTION PROTOYPES
+void level_new_init(level_t *l, uint32_t id);
+void level_tick(level_t *t);
+void level_update(level_t *t);
+void level_render(level_t *t);
+void level_deinit(level_t *t);
+void level_add_entity(level_t *t, entity_t *e);
+
+typedef struct level{
+    uint32_t id;
+    int width, height;
+
+    entity_t *entities;
+    int entity_count;
+    // list of all tiles.
+    tile_t *tiles;
+    int tile_count;
+} level_t;
+
+

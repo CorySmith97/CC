@@ -1,5 +1,4 @@
-#ifndef ARRAYLIST_H
-#define ARRAYLIST_H
+#pragma once
 
 // This is macro magic to make generic types in c. Dont question it.
 // Dont look too into it. May not be completely safe. But it tickels
@@ -41,5 +40,3 @@
       }                                                                                             \
       list->items[list->len + 1] = item;                                                            \
     }                                                                                               \
-
-#endif

@@ -1,0 +1,17 @@
+#pragma once
+
+// entity.h
+typedef struct entity_type entity_type_t;
+typedef struct entity entity_t;
+#define ENTITY_COUNT 1
+
+// level.h
+typedef struct level level_t;
+
+// tile.h
+typedef struct tile tile_t;
+typedef struct tile_type tile_type_t;
+typedef enum tile_enum tile_type_e ;
+
+// spritesheet.h
+typedef struct spritesheet spritesheet_t;
