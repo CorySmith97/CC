@@ -2,4 +2,5 @@ bin/
 .idea/
 .vscode/
 lib/mac/
-zig-out
+zig-out/
+.zig-cache/

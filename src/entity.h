@@ -17,6 +17,9 @@
 // FUNCTION PROTOYPES
 void entity_init(void);
 
+
+// TYPE DEFINITIONS
+
 typedef enum : uint8_t {
     ENTITY_PLAYER = 0,
 } entity_type_e;
@@ -36,6 +39,10 @@ typedef struct entity_type {
     // Axis Aligned Bounding Box
     // Used for collision.
     Rectangle aabb;
+
+    // Scalar to fit different size textures within
+    // the grid size that we will use.
+    int scale;
 
     // Function to render an entity. May change based
     // on entity

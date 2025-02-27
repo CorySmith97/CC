@@ -1,10 +1,16 @@
 #include "level.h"
+#include "forward.h"
 
-void level_new_init(level_t *l, uint32_t id) {
+void level_new_init(level_t *l,
+                    uint32_t id,
+                    int width,
+                    int height) {
     *l = (level_t){
         .id = id,
         .entities = nullptr,
         .entity_count = 0,
+        .width = width,
+        .height = height,
     };
 }
 
@@ -25,6 +31,10 @@ void level_tick(level_t *t) {
     }
 }
 void level_render(level_t *t) {
+    for (int i = 0; i < t->tile_count; i++) {
+        tile_type_t* type = TILE_TYPE(t->tiles[i]);
+        type->render_fn(&t->tiles[i]);
+    }
     for (int i = 0; i < t->entity_count; i++) {
         entity_type_t* type = ENTITY_TYPE(t->entities[i]);
         type->render_fn(&t->entities[i]);

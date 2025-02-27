@@ -10,6 +10,7 @@
 #include "state.h"
 #include "entity.h"
 #include "level.h"
+#include "tile.h"
 
 #define GRAVITY 0.2
 
@@ -34,7 +35,7 @@ int main(void){
 
     entity_init();
     level_t test;
-    level_new_init(&test, 0);
+    level_new_init(&test, 0, 10, 10);
 
     entity_t player =  {
         .type = ENTITY_PLAYER,

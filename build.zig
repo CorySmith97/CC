@@ -24,6 +24,7 @@ pub fn build(b: *std.Build) !void {
             "entity.c",
             "level.c",
             "tile.c",
+            "spritesheet.c",
         },
         .flags = &[_][]const u8{
             "-std=c23",

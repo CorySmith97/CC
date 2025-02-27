@@ -22,7 +22,8 @@ static void player_tick(level_t *level, entity_t *e) {
     // server about entity.
 }
 static void player_render(const entity_t *e) {
-    DrawTextureV(e->texture, e->pos, RAYWHITE);
+    entity_type_t type = ENTITY_TYPES[e->type];
+    DrawTextureEx(e->texture, e->pos, e->rotation, type.scale, RAYWHITE);
 #ifdef DEBUG
     Rectangle aabb = ENTITY_TYPE(*e)->aabb;
     DrawRectangleLinesEx((Rectangle){aabb.x + e->pos.x, aabb.y + e->pos.y, aabb.width, aabb.height}, 2, RED);
@@ -37,6 +38,7 @@ void entity_init(void) {
     ENTITY_TYPES[ENTITY_PLAYER] = (entity_type_t) {
         .name = "player",
         .aabb = (Rectangle){.x = 0, .y = 0, .width = 10, .height = 10},
+        .scale = 1.0,
         .update_fn = player_update,
         .tick_fn = player_tick,
         .render_fn = player_render,
