@@ -1,7 +1,7 @@
 0
-1510 11252883 1740619705383248528 00a4b184fd0aec23490c833c9416c095 0 /Users/corysmith/workspace/cc/src/level.c
-585 11252842 1740619696938454715 2e7f194d4ba338687594fe9ba292adf8 0 /Users/corysmith/workspace/cc/src/level.h
-1767 11253368 1740620029969222991 e1119c518123c6bb6b46fae7b81bb497 0 /Users/corysmith/workspace/cc/src/entity.h
+1732 11262919 1740631773119774507 0a8a9e60702e52cb768a5f43cd13592c 0 /Users/corysmith/workspace/cc/src/level.c
+634 11262102 1740631528418220137 ce247fff33d8db0df74be847bdcc5026 0 /Users/corysmith/workspace/cc/src/level.h
+1819 11257207 1740625084800184153 fae6488c57d426c5b27c8bf04b957894 0 /Users/corysmith/workspace/cc/src/entity.h
 30946 1449448 1717728681000000000 e276d1577b7066a682bd05aafd3ec13e 1 include/stdint.h
 5556 5088546 1731222362000000000 3a1e38f930a23ca7b326c783dadd5594 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/stdint.h
 1411 5139408 1731728240000000000 2ae28f8bdea8b1eee85456fb356045bc 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_int8_t.h
@@ -85,4 +85,15 @@
 1115 5138462 1731199372000000000 c85b727a9c94a867979d25be49d6def8 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_abort.h
 1481 5139369 1731728239000000000 35de07dd0740e1f23e3e782578ebc2ea 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_dev_t.h
 1465 5139390 1731728239000000000 1d08e3adb62e2d85ecc77fa28dbf9de6 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_mode_t.h
-971 11253290 1740619791473483515 3ff019c2f5d2df7e6972b13c37d53090 0 /Users/corysmith/workspace/cc/src/tile.h
+971 11253427 1740620116591638582 3ff019c2f5d2df7e6972b13c37d53090 0 /Users/corysmith/workspace/cc/src/tile.h
+3069 5140001 1731199375000000000 d1fcfe1b0a3d1d9afc0108916f5f0d49 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/stdio.h
+19566 5087550 1731199376000000000 bc42042e605b88f2388288ebaac1e849 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_stdio.h
+1714 5139407 1731728240000000000 d261c294ec6958ec6c249e99f4acd543 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_va_list.h
+2364 5139493 1731728280000000000 ecdcca3e73730bdfb0f7022a01084ccf 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/stdio.h
+1148 5140274 1731199376000000000 addedc983efba5b4c42e3749b25d8c5e 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_printf.h
+2123 5139381 1731728239000000000 b21f1f1bf32b653a3f9a93be8248a6aa 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_seek_set.h
+1128 5138458 1731199372000000000 29ceeb35ea3e4cf0fe1eb376427ec1dd 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_ctermid.h
+1460 5139339 1731728238000000000 b3d4159dc3f794552bf3eb6fbe36ddcb 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_off_t.h
+1473 5139357 1731728238000000000 ddbad807e12b792a96a61d50cd493c43 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_ssize_t.h
+2742 5139687 1731199374000000000 decfa6fe657ad4a29503056ab6bc09b4 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/secure/_stdio.h
+1447 5139690 1731199374000000000 14af68484e8a945a98d7291b10201a11 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/secure/_common.h

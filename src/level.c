@@ -1,5 +1,6 @@
 #include "level.h"
 #include "forward.h"
+#include <stdio.h>
 
 void level_new_init(level_t *l,
                     uint32_t id,
@@ -9,6 +10,8 @@ void level_new_init(level_t *l,
         .id = id,
         .entities = nullptr,
         .entity_count = 0,
+        .tiles = nullptr,
+        .tile_count = 0,
         .width = width,
         .height = height,
     };
@@ -42,10 +45,10 @@ void level_render(level_t *t) {
 }
 
 void level_add_entity(level_t *t, entity_t *e) {
-    void* temp = (entity_t*)realloc(t->entities, sizeof(entity_t) * (t->entity_count + 1));
+    void* temp = realloc(t->entities, sizeof(entity_t) * (t->entity_count + 1));
     if (temp == NULL) {
         free(t->entities);
-        exit(0);
+        printf("Printing error from realloc\n");
     }else if (temp == t->entities) {
         temp = NULL;
     } else {
@@ -55,4 +58,8 @@ void level_add_entity(level_t *t, entity_t *e) {
 
     t->entities[t->entity_count] = *e;
     t->entity_count += 1;
+}
+
+void level_print(level_t *t) {
+    printf("id: %d\ntile count: %d\nentity count: %d\n", t->id, t->tile_count, t->entity_count);
 }

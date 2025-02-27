@@ -1,5 +1,5 @@
 0
-1507 11253462 1740620145373403398 4761d947ad28a863f33aa0ed6e85e742 0 /Users/corysmith/workspace/cc/src/main.c
+1800 11262128 1740631605625753388 ac74914afb50fbf25464e465b3fa213c 0 /Users/corysmith/workspace/cc/src/main.c
 130625 10584053 1739917758977059515 1149a81355ce255d775d8d2a181bf094 0 /Users/corysmith/workspace/cc/lib/raylib.h
 3058 1449443 1717728681000000000 4bcfe4ef51bc756df3d61fc066fa863a 1 include/stdarg.h
 467 1449256 1717728681000000000 0f78a248b04856b5d60755486dcfed37 1 include/__stdarg___gnuc_va_list.h
@@ -58,7 +58,7 @@
 3226 5140190 1731199375000000000 ec79467898cb3cc6396374fb1f85cc63 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/assert.h
 3325 5139244 1731199374000000000 d142ae9ee64140c4d431033f8029fbc6 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_assert.h
 1205 5138597 1731199372000000000 cdda2bef51a34e5211b5377be76031a9 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_static_assert.h
-3140 10958414 1740201917890027770 2868d78839f17066f4804d3145800821 0 /Users/corysmith/workspace/cc/src/util/alloc.h
+3140 11255827 1740624580650024303 2868d78839f17066f4804d3145800821 0 /Users/corysmith/workspace/cc/src/util/alloc.h
 942 10888933 1740125475518863705 5b426bbe69ca3f76e9f6b5c5e69b72c1 0 /Users/corysmith/workspace/cc/src/util/llist.h
 2980 5138461 1731199372000000000 0ff002340c1948ef5e5bdc0087861eb6 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/stdlib.h
 15028 5087893 1731224754000000000 136f76d6ad2b2b82b5612fe3a15a55be 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_stdlib.h
@@ -110,8 +110,19 @@
 708 1449264 1717728681000000000 04b70454bf7cdd0c492cfaf134f95be7 1 include/__stddef_offsetof.h
 3402 10958442 1740201932213441758 530e444852bc73cd321eb6bf34453d59 0 /Users/corysmith/workspace/cc/src/util/arraylist.h
 70 10958472 1740201948009352703 8945781345ebe4f014850065453e353a 0 /Users/corysmith/workspace/cc/src/util/fixedlist.h
-143 10957693 1740201352798478910 9d2b0fdf5b12c6a7a68d4ee8b4337910 0 /Users/corysmith/workspace/cc/src/state.h
-1767 11253368 1740620029969222991 e1119c518123c6bb6b46fae7b81bb497 0 /Users/corysmith/workspace/cc/src/entity.h
+190 11255854 1740624631935975610 e905f340ba00dd61eb7dd8a172d740b5 0 /Users/corysmith/workspace/cc/src/state.h
+1819 11257207 1740625084800184153 fae6488c57d426c5b27c8bf04b957894 0 /Users/corysmith/workspace/cc/src/entity.h
 339 11247943 1740612738106102820 c66e72d2b7d9f9ac1140c60154ceebbd 0 /Users/corysmith/workspace/cc/src/forward.h
-585 11252842 1740619696938454715 2e7f194d4ba338687594fe9ba292adf8 0 /Users/corysmith/workspace/cc/src/level.h
+634 11262102 1740631528418220137 ce247fff33d8db0df74be847bdcc5026 0 /Users/corysmith/workspace/cc/src/level.h
 971 11253427 1740620116591638582 3ff019c2f5d2df7e6972b13c37d53090 0 /Users/corysmith/workspace/cc/src/tile.h
+284211 11257505 1740625125353320505 e15c9ae65a1ef10e4ef3748d298dce9a 0 /Users/corysmith/workspace/cc/lib/raygui.h
+3382 5139700 1731199374000000000 cc381ee0c0380ee383f81f4b91445015 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/ctype.h
+10331 5087776 1731224261000000000 e8775751d484f0d3801caabfa4d73252 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_ctype.h
+4215 5088551 1731227790000000000 df91cf56f65fcae535819958b5f30b8b 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/runetype.h
+1456 5139393 1731728239000000000 5788bf38dbcc0ffc4c84bf79a20b7d36 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_wint_t.h
+2975 5140278 1731199376000000000 0cbe56a5b1bbc8216e6c3bc75b47bcbb 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/string.h
+7483 5088158 1731228428000000000 9f346913235698cf67b0a2664f2c3bd6 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_string.h
+4194 5087923 1731228428000000000 d88293699c3d9aa19c4efb8b0451c602 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/_strings.h
+1895 5139688 1731199374000000000 2b90c36435b30feee4e3252a4ecd8ca7 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/secure/_strings.h
+5479 5088169 1731220992000000000 a5c10407c3c6ae6e3550871ad15d3e54 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/secure/_string.h
+514 11261756 1740631393219187740 b84577e1cbabacb605a05e2d2bad38aa 0 /Users/corysmith/workspace/cc/src/util/serde.h

@@ -1,6 +1,6 @@
 0
-1275 11253388 1740620069930844674 840d88b6b6e62c19002ea68ae63d83b8 0 /Users/corysmith/workspace/cc/src/entity.c
-1767 11253368 1740620029969222991 e1119c518123c6bb6b46fae7b81bb497 0 /Users/corysmith/workspace/cc/src/entity.h
+1308 11256780 1740624870754559105 f558b38d3beb6cdfdf0e25e0f519e4fd 0 /Users/corysmith/workspace/cc/src/entity.c
+1819 11257207 1740625084800184153 fae6488c57d426c5b27c8bf04b957894 0 /Users/corysmith/workspace/cc/src/entity.h
 30946 1449448 1717728681000000000 e276d1577b7066a682bd05aafd3ec13e 1 include/stdint.h
 5556 5088546 1731222362000000000 3a1e38f930a23ca7b326c783dadd5594 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/stdint.h
 1411 5139408 1731728240000000000 2ae28f8bdea8b1eee85456fb356045bc 0 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/sys/_types/_int8_t.h

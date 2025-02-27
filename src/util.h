@@ -1,7 +1,3 @@
-//
-// Created by Cory Smith on 2/19/25.
-//
-
 #ifndef UTIL_H
 #define UTIL_H
 

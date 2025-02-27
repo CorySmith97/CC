@@ -24,6 +24,7 @@ static void player_tick(level_t *level, entity_t *e) {
 static void player_render(const entity_t *e) {
     entity_type_t type = ENTITY_TYPES[e->type];
     DrawTextureEx(e->texture, e->pos, e->rotation, type.scale, RAYWHITE);
+    DrawCircleV(e->pos, 3, RED);
 #ifdef DEBUG
     Rectangle aabb = ENTITY_TYPE(*e)->aabb;
     DrawRectangleLinesEx((Rectangle){aabb.x + e->pos.x, aabb.y + e->pos.y, aabb.width, aabb.height}, 2, RED);

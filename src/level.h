@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include "tile.h"
+#include <stdio.h>
 
 // FUNCTION PROTOYPES
 
@@ -14,6 +15,7 @@ void level_update(level_t *t);
 void level_render(level_t *t);
 void level_deinit(level_t *t);
 void level_add_entity(level_t *t, entity_t *e);
+void level_print(level_t *t);
 
 // TYPE DEFINITIONS
 

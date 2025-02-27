@@ -1,14 +1,5 @@
 #pragma once
 
-//To add a component you simple typedef a struct,
-//and make sure there is an ID in the struct.
-//IE:
-//
-//typedef struct {
-//  uint32_t entity_id;
-//  void* data_for_type;
-//} entity_type_t;
-
 #include <stdint.h>
 #include "../lib/raylib.h"
 #include "../lib/raymath.h"
@@ -62,7 +53,8 @@ typedef struct entity {
     // from the entity list.
     entity_type_e type;
 
-    Vector2 pos, vel;
+    // position middle bottom of sprite
+    Vector2 pos, vel, render_pos;
     float rotation;
     Texture2D texture;
 

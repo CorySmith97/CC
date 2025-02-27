@@ -11,6 +11,9 @@
 #include "entity.h"
 #include "level.h"
 #include "tile.h"
+#define RAYGUI_IMPLEMENTATION
+#include "../lib/raygui.h"
+#include "util/serde.h"
 
 #define GRAVITY 0.2
 
@@ -35,7 +38,9 @@ int main(void){
 
     entity_init();
     level_t test;
-    level_new_init(&test, 0, 10, 10);
+    //level_new_init(&test, 0, 10, 10);
+    load_level_from_file("levels/test.clvl", &test);
+    level_print(&test);
 
     entity_t player =  {
         .type = ENTITY_PLAYER,
@@ -46,6 +51,7 @@ int main(void){
 
     };
     level_add_entity(&test, &player);
+    level_print(&test);
 
     allocator_t a;
     arena_allocator_init(&a, 1024);
@@ -69,6 +75,9 @@ int main(void){
         BeginDrawing();
         ClearBackground(GRAY);
         BeginMode2D(camera);
+        if (GuiButton((Rectangle){20, 30, 35, 50}, "PRESS ME")) {
+            printf("pressed\n");
+        }
         level_render(&test);
         EndMode2D();
 
