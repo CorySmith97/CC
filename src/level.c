@@ -23,23 +23,23 @@ void level_deinit(level_t *t) {
 
 void level_update(level_t *t) {
     for (int i = 0; i < t->entity_count; i++) {
-        entity_type_t* type = ENTITY_TYPE(t->entities[i]);
+        const entity_type_t* type = ENTITY_TYPE(t->entities[i]);
         type->update_fn(t, &t->entities[i]);
     }
 }
 void level_tick(level_t *t) {
     for (int i = 0; i < t->entity_count; i++) {
-        entity_type_t* type = ENTITY_TYPE(t->entities[i]);
+        const entity_type_t* type = ENTITY_TYPE(t->entities[i]);
         type->tick_fn(t, &t->entities[i]);
     }
 }
 void level_render(level_t *t) {
     for (int i = 0; i < t->tile_count; i++) {
-        tile_type_t* type = TILE_TYPE(t->tiles[i]);
+        const tile_type_t* type = TILE_TYPE(t->tiles[i]);
         type->render_fn(&t->tiles[i]);
     }
     for (int i = 0; i < t->entity_count; i++) {
-        entity_type_t* type = ENTITY_TYPE(t->entities[i]);
+        const entity_type_t* type = ENTITY_TYPE(t->entities[i]);
         type->render_fn(&t->entities[i]);
     }
 }

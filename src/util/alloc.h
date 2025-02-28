@@ -10,8 +10,8 @@ typedef struct allocator allocator_t;
 #define mem_alloc mem_alloc_impl
 #define mem_free mem_free_impl
 
-void *mem_alloc_impl(allocator_t *a, size_t size);
-void mem_free_impl(allocator_t *a);
+static inline void *mem_alloc_impl(allocator_t *a, size_t size);
+static inline void mem_free_impl(allocator_t *a);
 
 typedef struct allocator_stats {
     size_t size;
@@ -76,18 +76,18 @@ typedef struct {
 // This takes a zero initialized arena_t
 // and a capacity, which is the number of
 // bytes the arena will hold total.
-void inline ArenaNew(arena_t* arena, int size) {
+static inline void ArenaNew(arena_t* arena, int size) {
     arena->data = malloc(size);
     arena->ptr = arena->data;
     arena->capacity = 0;
     arena->size = size;
 }
 
-void inline ArenaReset(arena_t* arena) {
+static inline void ArenaReset(arena_t* arena) {
     arena->ptr = arena->data;
 }
 
-void *_arena_allocate(allocator_t* a, size_t size) {
+static inline void *_arena_allocate(allocator_t* a, size_t size) {
     void *ptr = a->arena_allocator.ptr;
     if (sizeof(a->arena_allocator.ptr) + size > a->arena_allocator.capacity){
         return NULL;
@@ -97,7 +97,7 @@ void *_arena_allocate(allocator_t* a, size_t size) {
     return ptr;
 }
 
-void _arena_free (allocator_t* a) {
+static inline void _arena_free (allocator_t* a) {
     free(a->arena_allocator.data);
     a->arena_allocator.data = NULL;
     a->arena_allocator.ptr = NULL;
@@ -106,7 +106,7 @@ void _arena_free (allocator_t* a) {
 }
 
 
-void arena_allocator_init(allocator_t *a, size_t capacity) {
+static inline void arena_allocator_init(allocator_t *a, size_t capacity) {
     *a = (allocator_t){
         .stats = {},
         .alloc_fn = _arena_allocate,
@@ -120,10 +120,10 @@ void arena_allocator_init(allocator_t *a, size_t capacity) {
     a->arena_allocator.ptr = a->arena_allocator.data;
 }
 
-void *mem_alloc_impl(allocator_t *a, size_t size) {
+static inline void *mem_alloc_impl(allocator_t *a, size_t size) {
     void *data = a->alloc_fn(a, size);
     return data;
 }
-void mem_free_impl(allocator_t *a) {
+static inline void mem_free_impl(allocator_t *a) {
     a->free_fn(a);
 }

@@ -11,7 +11,7 @@ void entity_init(void);
 
 // TYPE DEFINITIONS
 
-typedef enum : uint8_t {
+typedef enum {
     ENTITY_PLAYER = 0,
 } entity_type_e;
 

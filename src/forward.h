@@ -1,5 +1,9 @@
 #pragma once
 
+// editor.h
+typedef struct editor editor_t;
+typedef enum editor_scene editor_scene_e;
+
 // entity.h
 typedef struct entity_type entity_type_t;
 typedef struct entity entity_t;
@@ -15,3 +19,6 @@ typedef enum tile_enum tile_type_e ;
 
 // spritesheet.h
 typedef struct spritesheet spritesheet_t;
+
+// state.h
+typedef struct state state_t;

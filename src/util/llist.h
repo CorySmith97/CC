@@ -25,7 +25,7 @@ typedef void (*llist_func_impl)(void*, void*, int);
 })
 
 
-void _llist_prepend_item(void *_list, void *n, int offset) {
+static inline void _llist_prepend_item(void *_list, void *n, int offset) {
     LLIST(void) *list = _list;
     LLIST_NODE(void) *fn = n + offset;
 

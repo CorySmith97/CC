@@ -13,36 +13,11 @@ Example:
 Prefer
 
 ```{c}
-arena_t arena = {};
-InitArena(&arena, 1024);
-```
-Over
-
-```{c}
-arena_t arena = InitArena(1024);
+    allocator_t a;
+    arena_allocator_init(&a, 1024);
 ```
 
-This is a good practice for managing data. It makes your life easier when debugging.
 
-### ECS
-
-This is something I want to learn more about. We will be using a very simple ecs system.
-You can think about ecs like a local database, and an entity has an index for
-entries for each type that we need.
-
-IE
-
----------------------------
-|Health | Position | Stats|
-|                         |
-|                         |
----------------------------
-
-Each entity has an id that lets us know which data is its in the table.
-This is a concept of DOD (Data oriented design), it greatly helps with
-cache locality, or in other words, it means the CPU is only loading the data
-it is operating on at that time. Example we update all positions at the same time
-for all entities.
 
 - Amazing talk that explains a bit of it.
 
