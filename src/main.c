@@ -12,6 +12,7 @@
 #include "entity.h"
 #include "level.h"
 #include "tile.h"
+#include "util/log.h"
 #define RAYGUI_IMPLEMENTATION
 #include "../lib/raygui.h"
 #include "util/serde.h"
@@ -47,8 +48,8 @@ int main(void){
         .vel = (Vector2){0, 0},
         .rotation = 0,
         .texture = LoadTexture("assets/golbin1.png"),
-
     };
+
     level_add_entity(&test, &player);
 
     allocator_t a;
@@ -69,7 +70,9 @@ int main(void){
         .rotation = 0.0,
     };
 
+    SetTargetFPS(120);
     while (!WindowShouldClose()) {
+        LOG(info, TextFormat("%fms", GetFrameTime()));
         if (IsKeyPressed(KEY_L)) {
             state.menu_state = MAIN_MENU;
         }
@@ -111,5 +114,6 @@ int main(void){
         }
     }
     level_deinit(&test);
+    editor_deinit(&editor);
     mem_free(&a);
 }

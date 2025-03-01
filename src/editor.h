@@ -2,6 +2,7 @@
 
 #include "forward.h"
 #include "util/strings.h"
+#include "../lib/raylib.h"
 #include "../lib/raygui.h"
 #include "level.h"
 #include "util/alloc.h"
@@ -15,11 +16,14 @@ void editor_init(editor_t*);
 void editor_render(editor_t*);
 void editor_input(editor_t*);
 void editor_reload_levels(editor_t*);
+void editor_deinit(editor_t*);
 
 // TYPE DEFINITIONS
 
 typedef struct editor {
     allocator_t allocator;
+
+    Camera2D camera;
 
     Rectangle editor_window;
     Rectangle new_level_window;

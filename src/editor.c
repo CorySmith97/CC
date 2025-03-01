@@ -1,4 +1,5 @@
 #include "editor.h"
+#include "level.h"
 
 static bool new_level_width_selected = false;
 static bool new_level_height_selected = false;
@@ -12,10 +13,17 @@ void editor_init(editor_t *e){
     string_t st;
     FilePathList list = LoadDirectoryFiles("levels");
 
+    Camera2D camera = {
+        .zoom = 1.0,
+        .offset = {0, 0},
+        .target = {0, 0},
+        .rotation = 0.0,
+    };
 
     string_concat_with_char(&st, &a, list.paths, list.count, ';');
 
     *e = (editor_t) {
+        .camera = camera,
         .editor_window = (Rectangle){ 15, 15, 250, 300},
         .new_level_window = (Rectangle){ 200, 200, 250, 300},
         .editor_window_toggle = true,
@@ -30,9 +38,15 @@ void editor_reload_levels(editor_t *e) {
 }
 
 void editor_render(editor_t *e){
+    LOG(debug, TextFormat("%p", e->selected_level));
+
     bool editor_moving = false;
     bool new_level_moving = false;
     Vector2 mouse_pos = GetMousePosition();
+
+    if (e->selected_level != nullptr) {
+        level_print(e->selected_level);
+    }
     Rectangle status_bar_collision_rec =
         (Rectangle){e->editor_window.x, e->editor_window.y,
                     e->editor_window.width, 24};
@@ -87,10 +101,19 @@ void editor_render(editor_t *e){
             new_width_rec, "New Level width", &e->new_level_width, 0, 256, new_level_width_selected);
         GuiSpinner(
             new_height_rec, "New Level height", &e->new_level_height, 0, 256, new_level_height_selected);
+        if (GuiButton((Rectangle){e->new_level_window.x + 10, e->new_level_window.y + 130, 100, 30}, "Create Level")) {
+            level_t level;
+            level_new_init(&level, 0, e->new_level_width, e->new_level_height);
+            e->selected_level = &level;
+        }
     }
 }
 void editor_input(editor_t *e){
     if (IsKeyPressed(KEY_FIVE)) {
         e->editor_window_toggle = true;
     }
+}
+
+void editor_deinit(editor_t *e){
+    e->allocator.free_fn(&e->allocator);
 }

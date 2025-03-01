@@ -5,3 +5,4 @@ lib/mac/
 zig-out/
 .zig-cache/
 .DS_Store
+lib/styles/

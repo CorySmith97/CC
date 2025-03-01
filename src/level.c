@@ -1,5 +1,6 @@
 #include "level.h"
 #include "forward.h"
+#include "util/log.h"
 #include <stdio.h>
 
 void level_new_init(level_t *l,
@@ -34,13 +35,21 @@ void level_tick(level_t *t) {
     }
 }
 void level_render(level_t *t) {
+    if (t->entity_count == 0 || t->tile_count == 0) {
+        LOG(error, "Entities and tiles are empty");
+        return;
+    }
     for (int i = 0; i < t->tile_count; i++) {
         const tile_type_t* type = TILE_TYPE(t->tiles[i]);
-        type->render_fn(&t->tiles[i]);
+        if (type) {
+            type->render_fn(&t->tiles[i]);
+        }
     }
     for (int i = 0; i < t->entity_count; i++) {
         const entity_type_t* type = ENTITY_TYPE(t->entities[i]);
-        type->render_fn(&t->entities[i]);
+        if (type) {
+            type->render_fn(&t->entities[i]);
+        }
     }
 }
 

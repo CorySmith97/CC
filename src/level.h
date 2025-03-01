@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include "tile.h"
 #include <stdio.h>
+#include "util/log.h"
 
 // FUNCTION PROTOYPES
 
