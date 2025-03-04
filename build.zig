@@ -33,6 +33,7 @@ pub fn build(b: *std.Build) !void {
             "-Wextra",
             "-I./lib",
             "-I./assets",
+            "-Wno-reserved-id-macro",
         },
     });
 

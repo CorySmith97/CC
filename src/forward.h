@@ -21,4 +21,4 @@ typedef enum tile_enum tile_type_e ;
 typedef struct spritesheet spritesheet_t;
 
 // state.h
-typedef struct state state_t;
+typedef struct s state_t;

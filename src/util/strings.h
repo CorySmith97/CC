@@ -38,3 +38,5 @@ static inline void string_concat_with_char(
         }
     }
 }
+
+#define str(_S) ((string_t){.s = _S, .len = strlen(_S)})

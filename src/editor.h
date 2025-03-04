@@ -9,6 +9,9 @@
 #include <stddef.h>
 #include <stdio.h>
 #include "def.h"
+#include "util/map.h"
+#include "util/kvstore.h"
+#include "util/strings.h"
 
 // FUNCTION PROTOYPES
 

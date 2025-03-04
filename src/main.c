@@ -3,9 +3,11 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <assert.h>
+#include <stdlib.h>
 #include "forward.h"
 #include "util/alloc.h"
 #include "util/arraylist.h"
+#include "util/kvstore.h"
 #include "util/llist.h"
 #include "util/fixedlist.h"
 #include "state.h"
@@ -20,21 +22,22 @@
 #include "editor.h"
 #include "def.h"
 #include "util/strings.h"
+#include "util/map.h"
 
 #define GRAVITY 0.2
 
+state_t state;
 
 FIXEDLIST(float, 10) list;
-
-static state_t state;
 
 int main(void){
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "CC");
-
+    state_init(&state);
 
     editor_t editor;
     editor_init(&editor);
+
 
     entity_init();
     level_t test;
@@ -54,6 +57,7 @@ int main(void){
 
     allocator_t a;
     arena_allocator_init(&a, 1024);
+
     GuiLoadStyleDark();
 
     list.arr[1] = 10;
@@ -61,6 +65,7 @@ int main(void){
     int* list = mem_alloc(&a, 2 * sizeof(int));
     list[0] = 10;
     list[1] = 20;
+
 
 
     Camera2D camera = {
@@ -72,7 +77,7 @@ int main(void){
 
     SetTargetFPS(120);
     while (!WindowShouldClose()) {
-        LOG(info, TextFormat("%fms", GetFrameTime()));
+        //LOG(info, TextFormat("%fms", GetFrameTime()));
         if (IsKeyPressed(KEY_L)) {
             state.menu_state = MAIN_MENU;
         }
@@ -112,8 +117,10 @@ int main(void){
             } break;
 
         }
+        printf("\e[1;1H\e[2J");
     }
     level_deinit(&test);
     editor_deinit(&editor);
     mem_free(&a);
+    state_deinit(&state);
 }
