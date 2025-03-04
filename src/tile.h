@@ -2,6 +2,7 @@
 
 #include "forward.h"
 #include "../lib/raylib.h"
+#include "spritesheet.h"
 
 // FUNCTION PROTOYPES
 void tiles_init(void);
@@ -25,6 +26,9 @@ typedef struct tile_type{
     const char* name;
     // Axis Aligned Bounding Box
     Rectangle aabb;
+    int sprite_id;
+    spritesheet_t *ss;
+
     // Render for type
     void (*render_fn)(const tile_t*);
 
@@ -45,5 +49,4 @@ typedef struct tile {
     tile_type_e type;
 
     Vector2 pos, size;
-    spritesheet_t *ss;
 } tile_t;

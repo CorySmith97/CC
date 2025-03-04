@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include "forward.h"
+#include "spritesheet.h"
 #include "util/alloc.h"
 #include "util/arraylist.h"
 #include "util/kvstore.h"
@@ -27,6 +28,7 @@
 #define GRAVITY 0.2
 
 state_t state;
+spritesheet_t ss;
 
 FIXEDLIST(float, 10) list;
 
@@ -37,13 +39,22 @@ int main(void){
 
     editor_t editor;
     editor_init(&editor);
+    tiles_init();
 
+    //level_t test_level;
+    //level_new_init(&test_level, 1, 32, 32);
+    //save_level_to_file("levels/test2.clvl", &test_level);
+    level_t l;
+    load_level_from_file("levels/test2.clvl", &state.arena, &l);
+    printf("Level: %d, %d", l.tile_count, l.entity_count);
 
     entity_init();
     level_t test;
     level_new_init(&test, 0, 10, 10);
     //load_level_from_file("levels/test.clvl", &test);
     //level_print(&test);
+    //
+    spritesheet_init(&ss, "assets/cctilesheet.png", 16, 16);
 
     entity_t player =  {
         .type = ENTITY_PLAYER,
@@ -53,6 +64,11 @@ int main(void){
         .texture = LoadTexture("assets/golbin1.png"),
     };
 
+    tile_t ground = {
+        .type = TILE_GROUND,
+        .size = (Vector2){16, 16},
+        .pos = (Vector2){400, 200},
+    };
     level_add_entity(&test, &player);
 
     allocator_t a;
@@ -99,19 +115,20 @@ int main(void){
                 editor_input(&editor);
                 BeginDrawing();
                 ClearBackground(GRAY);
+                const tile_type_t* type = TILE_TYPE(ground);
+                if (type) {
+                    type->render_fn(&ground);
+                }
                 editor_render(&editor);
                 EndDrawing();
             } break;
             case SCRATCH: {
-                level_update(&test);
                 BeginDrawing();
                 ClearBackground(GRAY);
                 BeginMode2D(camera);
                 if (GuiButton((Rectangle){20, 30, 80, 50}, "PRESS ME")) {
                     printf("pressed\n");
                 }
-                editor_render(&editor);
-                level_render(&test);
                 EndMode2D();
                 EndDrawing();
             } break;

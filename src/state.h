@@ -30,7 +30,7 @@ static void state_init(state_t* s) {
     allocator_t arena;
     allocator_t frame;
     // This is 40960 bytes
-    arena_allocator_init(&arena, PAGE_SIZE * 10);
+    arena_allocator_init(&arena, PAGE_SIZE * 100);
     // This is 4096 bytes
     arena_allocator_init(&frame, PAGE_SIZE);
 

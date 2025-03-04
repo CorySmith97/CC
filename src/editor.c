@@ -118,7 +118,6 @@ void editor_render(editor_t *e){
             level_t level;
             level_new_init(&level, 0, e->new_level_width, e->new_level_height);
 
-            LOG(info, TextFormat("name len: %s", str(name).len));
         }
     }
 }
