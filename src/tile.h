@@ -16,7 +16,7 @@ void tiles_init(void);
 #define TILE_EMITTER 0x02
 
 // Size of tile_type_e
-#define TILE_COUNT 1
+#define TILE_COUNT 2
 
 typedef enum tile_enum {
     TILE_GROUND,
