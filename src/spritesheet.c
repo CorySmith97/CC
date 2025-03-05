@@ -18,9 +18,13 @@ void spritesheet_init(
 Rectangle spritesheet_get_rec_from_id(
     spritesheet_t *ss,
     int id) {
+    int columns = ss->texture.width / ss->sprite_width;
+    int col = id % columns;
+    int row = id / columns;
+
     return (Rectangle){
-        .x = (ss->texture.width % ss->sprite_width) * id,
-        .y = (ss->texture.height % ss->sprite_height) * id,
+        .x = col * ss->sprite_width,
+        .y = row * ss->sprite_height,
         .width = ss->sprite_width,
         .height = ss->sprite_height,
     };
