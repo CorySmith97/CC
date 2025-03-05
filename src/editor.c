@@ -117,7 +117,6 @@ void editor_render(editor_t *e){
         if (GuiButton((Rectangle){e->new_level_window.x + 10, e->new_level_window.y + 180, 100, 30}, "Create Level")) {
             level_t level;
             level_new_init(&level, 0, e->new_level_width, e->new_level_height);
-
         }
     }
 }

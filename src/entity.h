@@ -13,6 +13,7 @@ void entity_init(void);
 
 typedef enum {
     ENTITY_PLAYER = 0,
+    ENTITY_GOBLIN = 1,
 } entity_type_e;
 
 // entity_type_t default info all entities metadata.
@@ -23,6 +24,7 @@ typedef enum {
 // about all entities of a type. The info that never
 // changes.
 
+// MUST HAVES FOR ALL ENTITIES
 typedef struct entity_type {
     // Name of type
     const char* name;
@@ -59,8 +61,12 @@ typedef struct entity {
     Texture2D texture;
 
     struct {
-
+        bool can_jump;
     } player_t;
+
+    struct {
+        int ammo_count;
+    } goblin_t;
 
 } entity_t;
 

@@ -62,6 +62,9 @@ int main(void){
         .vel = (Vector2){0, 0},
         .rotation = 0,
         .texture = LoadTexture("assets/golbin1.png"),
+        .player_t = {
+            .can_jump = false,
+        }
     };
 
     tile_t ground = {

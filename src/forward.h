@@ -7,7 +7,7 @@ typedef enum editor_scene editor_scene_e;
 // entity.h
 typedef struct entity_type entity_type_t;
 typedef struct entity entity_t;
-#define ENTITY_COUNT 1
+#define ENTITY_COUNT 2
 
 // level.h
 typedef struct level level_t;

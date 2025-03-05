@@ -1,5 +1,14 @@
 #include "entity.h"
 //#define DEBUG
+//
+//
+static void goblin_update(level_t *level, entity_t *e) {
+    e->goblin_t.ammo_count -= 1;
+}
+static void goblin_tick(level_t *level, entity_t *e) {
+}
+static void goblin_render(const entity_t *e) {
+}
 
 static void player_update(level_t *level, entity_t *e) {
     e->pos = Vector2Add(e->pos, e->vel);
@@ -43,6 +52,15 @@ void entity_init(void) {
         .update_fn = player_update,
         .tick_fn = player_tick,
         .render_fn = player_render,
+    };
+
+    ENTITY_TYPES[ENTITY_GOBLIN] = (entity_type_t) {
+        .name = "player",
+        .aabb = (Rectangle){.x = 0, .y = 0, .width = 10, .height = 10},
+        .scale = 1.0,
+        .update_fn = goblin_update,
+        .tick_fn = goblin_tick,
+        .render_fn = goblin_render,
     };
 }
 
