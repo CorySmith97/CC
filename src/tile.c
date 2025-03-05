@@ -34,6 +34,27 @@ void tiles_init(void){
         .ss = &ss,
         .sprite_id = 1,
     };
+    TILE_TYPES[TILE_SNOW] = (tile_type_t) {
+        .name = "Snow",
+        .aabb = (Rectangle){0, 0, 16, 16},
+        .flags = 0,
+        .tick_fn = tile_tick_ground,
+        .render_fn = tile_render_ground,
+        .update_fn = tile_update_ground,
+        .ss = &ss,
+        .sprite_id = 2,
+    };
+    TILE_TYPES[TILE_CAVE] = (tile_type_t) {
+        .name = "Cave",
+        .aabb = (Rectangle){0, 0, 16, 16},
+        .flags = 0,
+        .tick_fn = tile_tick_ground,
+        .render_fn = tile_render_ground,
+        .update_fn = tile_update_ground,
+        .ss = &ss,
+        .sprite_id = 3,
+    };
+    
 }
 
 

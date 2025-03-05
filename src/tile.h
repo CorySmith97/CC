@@ -16,11 +16,13 @@ void tiles_init(void);
 #define TILE_EMITTER 0x02
 
 // Size of tile_type_e
-#define TILE_COUNT 2
+#define TILE_COUNT 4
 
 typedef enum tile_enum {
     TILE_GROUND,
     TILE_SAND,
+    TILE_SNOW,
+    TILE_CAVE,
 } tile_type_e;
 
 typedef struct tile_type{
