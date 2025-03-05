@@ -36,3 +36,11 @@ https://www.raylib.com/cheatsheet/cheatsheet.html
 https://www.raylib.com/index.html
 
 https://learnopengl.com/Introduction
+
+### Clark DUmmy NOtes
+run program = zig/zig.exe build run
+
+Do first thing when opening
+most recents changes = git pull
+
+Push changes = 

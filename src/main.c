@@ -68,7 +68,7 @@ int main(void){
     };
 
     tile_t ground = {
-        .type = TILE_GROUND,
+        .type = TILE_SAND,
         .size = (Vector2){16, 16},
         .pos = (Vector2){400, 200},
     };

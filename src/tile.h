@@ -20,6 +20,7 @@ void tiles_init(void);
 
 typedef enum tile_enum {
     TILE_GROUND,
+    TILE_SAND,
 } tile_type_e;
 
 typedef struct tile_type{
