@@ -30,12 +30,16 @@ typedef struct editor {
 
     Rectangle editor_window;
     Rectangle new_level_window;
+    Rectangle tile_editor_window;
 
     bool editor_window_toggle;
     bool new_level_window_toggle;
+    bool tile_editor_window_toggle;
 
     string_t levels;
     int levels_len;
     level_t *selected_level;
     int new_level_width, new_level_height;
+
+    int selected_tile;
 } editor_t;
